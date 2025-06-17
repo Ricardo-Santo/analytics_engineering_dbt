@@ -1,0 +1,77 @@
+version: 1
+
+models:
+  - name: stg__dvd_rental_category
+    description: "Staging table for the table category"
+    columns:
+      - name: category_id
+        description: "Unique Identifier of a film category"
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: "Name identifier of the film category"
+        tests:
+          - not_null
+      - name: last_update
+        description: "Timestamp of the last update made to a row" 
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_film_category')
+              field: category_id
+
+  - name: stg__dvd_rental_film_category
+    description:
+    columns:
+      - name:
+        description: 
+        data_tests:
+          - unique
+          - not_null
+
+
+  - name: stg__dvd_rental_inventory
+    description:
+    columns:
+      - name:
+        description: 
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg__dvd_rental_payment
+    description:
+    columns:
+      - name:
+        description: 
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg__dvd_rental_rental
+    description:
+    columns:
+      - name:
+        description: 
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg__dvd_rental_staff
+    description:
+    columns:
+      - name:
+        description: 
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg__dvd_rental_store
+    description:
+    columns:
+      - name:
+        description: 
+        data_tests:
+          - unique
+          - not_null
