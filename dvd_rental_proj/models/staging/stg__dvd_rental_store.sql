@@ -3,5 +3,5 @@ WITH store_source AS (
     FROM { { source('project_dvd', 'store') } }
 )
 SELECT
-staff_id::INTEGER
+manager_staff_id::INTEGER
 FROM store_source

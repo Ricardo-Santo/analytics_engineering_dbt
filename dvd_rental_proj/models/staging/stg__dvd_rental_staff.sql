@@ -5,8 +5,8 @@ WITH staff_source AS (
 SELECT staff_id,
 first_name,
 last_name,
-address_id,
-store_id,
+address_id::INTEGER,
+store_id::INTEGER,
 active,
 username,
 last_update

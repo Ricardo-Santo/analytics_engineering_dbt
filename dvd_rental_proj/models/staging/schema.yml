@@ -2,76 +2,224 @@ version: 1
 
 models:
   - name: stg__dvd_rental_category
-    description: "Staging table for the table category"
+    description: "Staging table for category"
     columns:
       - name: category_id
-        description: "Unique Identifier of a film category"
+        description: "Unique Identifier of a category"
         tests:
           - unique
           - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_film_category')
+              field: category_id
       - name: name
-        description: "Name identifier of the film category"
+        description: "Name identifier of a category"
         tests:
           - not_null
       - name: last_update
         description: "Timestamp of the last update made to a row" 
         tests:
           - not_null
-          - relationships:
-              to: ref('stg__dvd_rental_film_category')
-              field: category_id
 
   - name: stg__dvd_rental_film_category
-    description:
+    description: "Staging table for film category"
     columns:
-      - name:
-        description: 
+      - name: film_id
+        description: "Unique Identifier of a film category"
         data_tests:
           - unique
           - not_null
-
+      - name: category_id
+        description: "Name identifier of a film category"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_category')
+              field: category_id
+      - name: last_update
+        description: "Timestamp of the last update made to a row" 
+        tests:
+          - not_null
 
   - name: stg__dvd_rental_inventory
-    description:
+    description: "Staging table for inventory"
     columns:
-      - name:
-        description: 
+      - name: inventory_id
+        description: "Unique Identifier of the inventory"
         data_tests:
           - unique
+          - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_rental')
+              field: inventory_id
+      - name: film_id
+        description: "ID of a film in the inventory"
+        tests:
+          - not_null
+      - name: store_id
+        description: "ID of a store that has a matching film in inventory"
+        tests:
+          - not_null
+      - name: last_update
+        description: "Timestamp of the last update made to a row" 
+        tests:
           - not_null
 
   - name: stg__dvd_rental_payment
-    description:
+    description: "Staging table for payment"
     columns:
-      - name:
-        description: 
+      - name: payment_id
+        description: "Unique Identifier of the payment"
         data_tests:
           - unique
           - not_null
+      - name: customer_id
+        description: "ID of the customer that made the payment"
+        data_tests:
+          - not_null
+      - name: staff_id
+        description: "ID of the staff person that received the payment"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_staff')
+              field: staff_id
+      - name: rental_id
+        description: "ID of the rental to which the payment corresponds"
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_rental')
+              field: rental_id
+      - name: amount
+        description: "Numeric value of the amount payed, with a total 5 digits, with 2 digits after the decimal point"
+        data_tests:
+          - not_null
+      - name: payment_date
+        description: "Timestamp of the date in which the payment was executed"
+        data_tests:
+          - not_null
 
   - name: stg__dvd_rental_rental
-    description:
+    description: "Staging table for rental"
     columns:
-      - name:
-        description: 
+      - name: rental_id
+        description: "Unique Identifier of the rental"
         data_tests:
           - unique
+          - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_payment')
+              field: rental_id
+      - name: rental_date
+        description: "Timestamp of the date corresponding to the start of the rental"
+        tests:
+          - not_null
+      - name: inventory_id
+        description: "ID of the inventory to rent"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_inventory')
+              field: inventory_id
+      - name: customer_id
+        description: "ID of the customer that rented the requested inventory" 
+        tests:
+          - not_null
+      - name: return_date
+        description: "Timestamp of the date corresponding to the end of the rental" 
+        tests:
+      - name: staff_id
+        description: "ID of the staff that made the rental" 
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_film_staff')
+              field: staff_id
+      - name: last_update
+        description: "Timestamp of the last update made to a row" 
+        tests:
           - not_null
 
   - name: stg__dvd_rental_staff
     description:
     columns:
-      - name:
-        description: 
+      - name: staff_id
+        description: "Unique Identifier of the staff"
         data_tests:
           - unique
           - not_null
+      - name: first_name
+        description: "First name of the staff"
+        data_tests:
+          - not_null
+      - name: last_name
+        description: "Last name of the staff"
+        data_tests:
+          - not_null
+      - name: address_id
+        description: "ID of the staff address"
+        data_tests:
+          - not_null
+      - name: store_id
+        description: "ID of the store where the staff works"
+        data_tests:
+          - unique
+          - not_null
+      - name: active
+        description: "Identifies if the staff is active or inactive"
+        data_tests:
+          - not_null
+      - name: username
+        description: "Username of the corresponding staff"
+        data_tests:
+          - unique
+          - not_null
+      - name: last_update
+        description: "Timestamp of the last update made to a row"
+        data_tests:
+          - not_null
+    tests:
+      - relationships:
+          model: ref('stg__dvd_rental_staff')
+          column_name: staff_id
+          to: ref('stg__dvd_rental_payment')
+          field: staff_id
+      - relationships:
+          model: ref('stg__dvd_rental_staff')
+          column_name: staff_id
+          to: ref('stg__dvd_rental_rental')
+          field: staff_id
+      - relationships:
+          model: ref('stg__dvd_rental_staff')
+          column_name: staff_id
+          to: ref('stg__dvd_rental_store')
+          field: staff_id
 
   - name: stg__dvd_rental_store
     description:
     columns:
-      - name:
-        description: 
+      - name: store_id
+        description: "Unique Identifier of the store" 
         data_tests:
           - unique
+          - not_null
+      - name: manager_staff_id
+        description: "ID of the staff person that manages the corresponding store"
+        data_tests:
+          - not_null
+        tests:
+          - relationships:
+            model: ref('stg__dvd_rental_store')
+            column_name: staff_id
+            to: ref('stg__dvd_rental_staff')
+            field: staff_id
+      - name: address_id
+        description: "ID of the address of the store"
+        data_tests:
+          - unique
+          - not_null
+      - name: last_update
+        description: "Timestamp of the last update made to a row"
+        data_tests:
           - not_null

@@ -4,4 +4,5 @@ WITH payment_source AS (
 )
 SELECT
 staff_id::INTEGER
+rental_id::INTEGER
 FROM payment_source
