@@ -26,7 +26,7 @@ models:
     columns:
       - name: film_id
         description: "Unique Identifier of a film category"
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: category_id
@@ -46,7 +46,7 @@ models:
     columns:
       - name: inventory_id
         description: "Unique Identifier of the inventory"
-        data_tests:
+        tests:
           - unique
           - not_null
           - relationships:
@@ -70,34 +70,34 @@ models:
     columns:
       - name: payment_id
         description: "Unique Identifier of the payment"
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: customer_id
         description: "ID of the customer that made the payment"
-        data_tests:
+        tests:
           - not_null
       - name: staff_id
         description: "ID of the staff person that received the payment"
-        data_tests:
+        tests:
           - not_null
           - relationships:
               to: ref('stg__dvd_rental_staff')
               field: staff_id
       - name: rental_id
         description: "ID of the rental to which the payment corresponds"
-        data_tests:
+        tests:
           - not_null
           - relationships:
               to: ref('stg__dvd_rental_rental')
               field: rental_id
       - name: amount
         description: "Numeric value of the amount payed, with a total 5 digits, with 2 digits after the decimal point"
-        data_tests:
+        tests:
           - not_null
       - name: payment_date
         description: "Timestamp of the date in which the payment was executed"
-        data_tests:
+        tests:
           - not_null
 
   - name: stg__dvd_rental_rental
@@ -105,7 +105,7 @@ models:
     columns:
       - name: rental_id
         description: "Unique Identifier of the rental"
-        data_tests:
+        tests:
           - unique
           - not_null
           - relationships:
@@ -128,13 +128,12 @@ models:
           - not_null
       - name: return_date
         description: "Timestamp of the date corresponding to the end of the rental" 
-        tests:
       - name: staff_id
         description: "ID of the staff that made the rental" 
         tests:
           - not_null
           - relationships:
-              to: ref('stg__dvd_rental_film_staff')
+              to: ref('stg__dvd_rental_staff')
               field: staff_id
       - name: last_update
         description: "Timestamp of the last update made to a row" 
@@ -142,84 +141,76 @@ models:
           - not_null
 
   - name: stg__dvd_rental_staff
-    description:
+    description: "Staging table for staff"
     columns:
       - name: staff_id
         description: "Unique Identifier of the staff"
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: first_name
         description: "First name of the staff"
-        data_tests:
+        tests:
           - not_null
       - name: last_name
         description: "Last name of the staff"
-        data_tests:
+        tests:
           - not_null
       - name: address_id
         description: "ID of the staff address"
-        data_tests:
+        tests:
           - not_null
       - name: store_id
         description: "ID of the store where the staff works"
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: active
         description: "Identifies if the staff is active or inactive"
-        data_tests:
+        tests:
           - not_null
       - name: username
         description: "Username of the corresponding staff"
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: last_update
         description: "Timestamp of the last update made to a row"
-        data_tests:
+        tests:
           - not_null
     tests:
       - relationships:
-          model: ref('stg__dvd_rental_staff')
-          column_name: staff_id
           to: ref('stg__dvd_rental_payment')
           field: staff_id
       - relationships:
-          model: ref('stg__dvd_rental_staff')
-          column_name: staff_id
           to: ref('stg__dvd_rental_rental')
           field: staff_id
       - relationships:
-          model: ref('stg__dvd_rental_staff')
-          column_name: staff_id
           to: ref('stg__dvd_rental_store')
           field: staff_id
 
   - name: stg__dvd_rental_store
-    description:
+    description: "Staging table for stores"
     columns:
       - name: store_id
         description: "Unique Identifier of the store" 
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: manager_staff_id
         description: "ID of the staff person that manages the corresponding store"
-        data_tests:
-          - not_null
         tests:
+          - not_null
           - relationships:
-            model: ref('stg__dvd_rental_store')
-            column_name: staff_id
-            to: ref('stg__dvd_rental_staff')
-            field: staff_id
+              to: ref('stg__dvd_rental_staff')
+              field: staff_id
       - name: address_id
         description: "ID of the address of the store"
-        data_tests:
+        tests:
           - unique
           - not_null
       - name: last_update
         description: "Timestamp of the last update made to a row"
-        data_tests:
+        tests:
           - not_null
+    materialized: view

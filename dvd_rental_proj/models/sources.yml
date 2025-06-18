@@ -1,7 +1,7 @@
 version: 1
 sources:
   - name: project_dvd
-    schema: main
+    schema: public
     tables:
       - name: address
       - name: category

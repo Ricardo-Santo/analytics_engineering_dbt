@@ -4,3 +4,4 @@ logs/
 dvd_rental_proj/profiles.yml
 dvd_rental_proj/.user.yml
 venv/
+.env/

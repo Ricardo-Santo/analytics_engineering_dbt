@@ -1,8 +1,12 @@
+{{ config(materialized='view') }}
+
 WITH inventory_source AS (
     SELECT *
-    FROM { { source('project_dvd', 'inventory') } }
+    FROM {{ source('project_dvd', 'inventory') }}
 )
 SELECT
-film_id::INTEGER
-store_id::INTEGER
+inventory_id,
+film_id::INTEGER AS film_id,
+store_id::INTEGER AS store_id,
+last_update
 FROM inventory_source
