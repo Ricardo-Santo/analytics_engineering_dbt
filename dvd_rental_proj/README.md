@@ -16,3 +16,19 @@ Try running the following commands:
 
 
 ### missing schema models add questions here
+
+
+## In the Staging layer, we decide to materialize the table into views, so as to not take too much space. 
+
+### We defined the sources model and placed it inside the staging folder.
+### We also decided to convert some of the data types from smallint to integer:
+### tables:
+###   - film_category: film_id and category_id columns;
+###   - inventory: film_id and store_id columns;
+###   - payment: staff_id and rental_id columns;
+###   - rental: staff_id column;
+###   - staff: address_id and store_id columns;
+###   - store: manager_staff_id column;
+### The justification for this was that in the next layer we will be merging and joining data tables, we want to have coherent data aggregation between the tables.
+### Some columns where also dropped from the staff table because it did not contain relevant information for the questions we where given to asnwer.
+### Tests, descriptions and relationships where also developed for each data table selected, and it's present in the schema.yml inside the staging folder.

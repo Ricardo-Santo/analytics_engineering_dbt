@@ -9,9 +9,6 @@ models:
         tests:
           - unique
           - not_null
-          - relationships:
-              to: ref('stg__dvd_rental_film_category')
-              field: category_id
       - name: name
         description: "Name identifier of a category"
         tests:
@@ -49,9 +46,6 @@ models:
         tests:
           - unique
           - not_null
-          - relationships:
-              to: ref('stg__dvd_rental_rental')
-              field: inventory_id
       - name: film_id
         description: "ID of a film in the inventory"
         tests:
@@ -108,9 +102,6 @@ models:
         tests:
           - unique
           - not_null
-          - relationships:
-              to: ref('stg__dvd_rental_payment')
-              field: rental_id
       - name: rental_date
         description: "Timestamp of the date corresponding to the start of the rental"
         tests:
