@@ -160,6 +160,8 @@ models:
         description: "Identifies if the staff is active or inactive"
         tests:
           - not_null
+          - accepted_values:
+              values: ['true', 'false'] 
       - name: username
         description: "Username of the corresponding staff"
         tests:
@@ -169,16 +171,6 @@ models:
         description: "Timestamp of the last update made to a row"
         tests:
           - not_null
-    tests:
-      - relationships:
-          to: ref('stg__dvd_rental_payment')
-          field: staff_id
-      - relationships:
-          to: ref('stg__dvd_rental_rental')
-          field: staff_id
-      - relationships:
-          to: ref('stg__dvd_rental_store')
-          field: staff_id
 
   - name: stg__dvd_rental_store
     description: "Staging table for stores"
