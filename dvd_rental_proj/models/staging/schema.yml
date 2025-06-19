@@ -236,3 +236,38 @@ models:
         tests:
           - not_null
     materialized: view
+  
+
+  - name: stg__dvd_rental_customer
+    description: "Staging table for customers with personal data excluded for privacy"
+    columns:
+      - name: customer_id
+        description: "Unique identifier of the customer"
+        tests:
+          - unique
+          - not_null
+
+      - name: store_id
+        description: "Identifier of the store the customer is associated with"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_store')
+              field: store_id
+
+      - name: is_active
+        description: "Indicates whether the customer is currently active"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false']
+
+      - name: created_at
+        description: "Timestamp when the customer was created"
+        tests:
+          - not_null
+
+      - name: updated_at
+        description: "Timestamp of the last update made to a row"
+        tests:
+          - not_null
