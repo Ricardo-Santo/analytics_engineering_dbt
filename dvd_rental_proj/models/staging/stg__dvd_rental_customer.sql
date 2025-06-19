@@ -6,7 +6,7 @@ WITH customer_source AS (
 )
 
 SELECT
-    customer_id::INTEGER AS customer_id,
+    id::INTEGER AS customer_id,
     store_id::INTEGER AS store_id,
     active::BOOLEAN AS is_active,
     create_date::TIMESTAMP AS created_at,

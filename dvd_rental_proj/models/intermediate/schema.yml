@@ -1,7 +1,7 @@
 version: 1
 
 models:
-  - name: int_payment_store
+  - name: int__dvd_rental_payment_store
     description: "Intermediate model that aggregates total payment amount per store and month"
     columns:
       - name: store_id
@@ -17,7 +17,7 @@ models:
         tests:
           - not_null
 
-  - name: int_rentals_by_category
+  - name: int__dvd_rental_rentals_by_category
     description: "Aggregates number of rentals per category, store, and month"
     columns:
       - name: store_id
@@ -37,7 +37,7 @@ models:
         tests:
           - not_null
 
-  - name: int_rentals_per_film
+  - name: int__dvd_rental_rentals_per_film
     description: "Counts rentals per film"
     columns:
       - name: film_id
@@ -49,7 +49,7 @@ models:
         tests:
           - not_null
 
-  - name: int_customer_revenue
+  - name: int__dvd_rental_customer_revenue
     description: "Aggregates total revenue per customer"
     columns:
       - name: customer_id
@@ -61,7 +61,7 @@ models:
         tests:
           - not_null
 
-  - name: int_store_performance
+  - name: int__dvd_rental_store_performance
     description: "Combined store-level performance metrics used to build the store performance index"
     columns:
       - name: store_id

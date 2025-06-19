@@ -3,7 +3,7 @@ with revenue as (
         store_id,
         date_trunc('month', payment_date) as month,
         sum(amount) as total_revenue
-    from {{ ref('int__payment_store') }}
+    from {{ ref('int__dvd_rental_payment_store') }}
     group by store_id, month
 ),
 

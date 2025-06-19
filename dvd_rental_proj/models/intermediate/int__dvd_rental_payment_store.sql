@@ -7,7 +7,7 @@ with payment_data as (
         p.payment_date,
         s.store_id
     from {{ ref('stg__dvd_rental_payment') }} p
-    join {{ ref('stg__dvd_rental_staff.sql') }} s
+    join {{ ref('stg__dvd_rental_staff') }} s
       on p.staff_id = s.staff_id
 )
 
