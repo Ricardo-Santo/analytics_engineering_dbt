@@ -1,4 +1,4 @@
--- models/intermediate/int_customer_revenue.sql
+-- calculate revenue and rental activity per customer, typically aggregated by month.
 
 with customer_payments as (
     select

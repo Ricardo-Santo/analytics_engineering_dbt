@@ -1,13 +1,12 @@
 ##  ANALYTICS ENGINEERING PROJECT
 
-This project focus in the Analytics Engineering process with the dbt technology. It integrates with a PostgreSQL database and supports dbt for transformation and Power BI for visualization.
+This project focus in the Analytics Engineering process with the dbt technology. It integrates with a PostgreSQL database and supports dbt for transformation ... under the ELT pipeline the major focus is on the ...
 
 ---
 
 ###  Project Overview
 
-This project automates the ETL pipeline for JVA stock data and company financials using the [Alpha Vantage API](https://www.alphavantage.co/). It stores the processed data in a PostgreSQL database and prepares it for analysis and modeling with [dbt](https://www.getdbt.com/).
-
+This project uses dbt and ... to solve and present solutions to a CEO from a DVD rental store KPI and questions about the store and its activity.
 ---
 
 ### Project Structure
@@ -61,22 +60,14 @@ DVDRENTAL/
 ###  How it works
 
 1. **Extract**: Collects daily stock prices and company overview for JVA using Alpha Vantage API.
-2. **Transform**: Creates star schema tables (`dim_empresa`, `dim_indicador`, `dim_tempo`, `fact_cotacoes`, `fact_indicadores`).
-3. **Load**: Inserts the transformed data into a PostgreSQL database.
-4. **Model** (optional): dbt can be used to create additional models (e.g., average monthly price).
-5. **Visualize** (optional): Dashboards can be created in Power BI.
+2. **Load**: Inserts the transformed data into a PostgreSQL database.
+2. **Transform**: ...
+4. **Model** ...
+5. **Visualize** (optional): ...
 
 ---
 
-###  Run with Docker
 
-```bash
-# Build the Docker image
-docker build -t etl_jva .
-
-# Run the ETL pipeline
-docker run --rm etl_jva
-```
 ###  Run the dashboard
 
 ```bash

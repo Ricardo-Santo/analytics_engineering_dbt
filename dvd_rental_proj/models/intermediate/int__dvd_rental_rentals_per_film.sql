@@ -1,3 +1,5 @@
+-- calculates how often each film was rented
+
 with rentals_joined as (
     select
         f.film_id,

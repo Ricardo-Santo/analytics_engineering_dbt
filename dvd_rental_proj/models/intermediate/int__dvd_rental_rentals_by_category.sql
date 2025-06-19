@@ -1,3 +1,4 @@
+-- aggregate rental counts per category, store, and period
 with rentals_joined as (
     select
         r.rental_id,

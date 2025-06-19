@@ -1,3 +1,5 @@
+-- connects metrics per store and period — revenue, rental volume, and average rental duration
+
 with revenue as (
     select
         store_id,

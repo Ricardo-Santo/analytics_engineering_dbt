@@ -1,3 +1,5 @@
+-- join payment information to the corresponding store
+
 with payment_data as (
     select
         p.payment_id,
