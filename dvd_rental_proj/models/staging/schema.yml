@@ -26,6 +26,9 @@ models:
         tests:
           - unique
           - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_film')
+              field: film_id
       - name: category_id
         description: "Name identifier of a film category"
         tests:
@@ -35,6 +38,39 @@ models:
               field: category_id
       - name: last_update
         description: "Timestamp of the last update made to a row" 
+        tests:
+          - not_null
+
+  - name: stg__dvd_rental_film
+    description: "Staging table for film"
+    columns:
+      - name: film_id
+        description: "Unique Identifier of the film"
+        tests:
+          - unique
+          - not_null
+      - name: title
+        description: "Title of the film"
+        tests:
+          - not_null
+      - name: release_year
+        description: "Year of the film was released"
+        tests:
+          - not_null
+      - name: rental_duration
+        description: "Rental duration of the film"
+        tests:
+          - not_null
+      - name: rental_rate
+        description: "Rate given to the rental"
+        tests:
+          - not_null
+      - name: replacement_cost
+        description: "Cost of replacing the film"
+        tests:
+          - not_null
+      - name: last_update
+        description: "Timestamp of the last update made to a row"
         tests:
           - not_null
 
@@ -50,6 +86,9 @@ models:
         description: "ID of a film in the inventory"
         tests:
           - not_null
+          - relationships:
+              to: ref('stg__dvd_rental_film')
+              field: film_id
       - name: store_id
         description: "ID of a store that has a matching film in inventory"
         tests:
