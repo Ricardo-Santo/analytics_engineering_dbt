@@ -16,11 +16,10 @@ with rentals_joined as (
 rentals_grouped as (
     select
         store_id,
-        date_trunc('month', rental_date) as month,
         category_name,
         count(*) as rental_count
     from rentals_joined
-    group by store_id, month, category_name
+    group by store_id, category_name
 )
 
 select *

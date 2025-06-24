@@ -8,8 +8,7 @@ with customer_payments as (
         sum(p.amount) as total_revenue,
         count(p.payment_id) as num_payments
     from {{ ref('stg__dvd_rental_payment') }} p
-    join {{ ref('stg__dvd_rental_customer') }} c
-      on p.customer_id = c.customer_id
+    join {{ ref('stg__dvd_rental_customer') }} c on p.customer_id = c.customer_id
     group by p.customer_id, c.store_id, month
 ),
 
@@ -23,12 +22,12 @@ customer_rentals as (
 )
 
 select
-    coalesce(cp.customer_id, cr.customer_id) as customer_id,
+    cp.customer_id,
     cp.store_id,
-    coalesce(cp.month, cr.month) as month,
+    cp.month,
     cp.total_revenue,
     cp.num_payments,
     cr.total_rentals
 from customer_payments cp
-full outer join customer_rentals cr
-  on cp.customer_id = cr.customer_id and cp.month = cr.month
+join customer_rentals cr
+on cp.customer_id = cr.customer_id
