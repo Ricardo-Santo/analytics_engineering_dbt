@@ -2,7 +2,7 @@ version: 1
 
 models:
   - name: fct_rental_performance_by_store
-    description: "Fact table that gives the monthly rental based performance of each store, before 2006"
+    description: '{{ doc("fct_rental_performance_by_store") }}'
     columns:
       - name: store_id
         description: "Store identifier"
@@ -22,7 +22,7 @@ models:
           - not_null
 
   - name: fct_revenue_performance_by_store
-    description: "Fact table that gives the monthly revenue based performance of each store, after 2006"
+    description: '{{ doc("fct_revenue_performance_by_store") }}'
     columns:
       - name: store_id
         description: "Identifier of the store"

@@ -1,17 +1,18 @@
-##  ANALYTICS ENGINEERING PROJECT
+# ANALYTICS ENGINEERING PROJECT
 
 This project focus in the Analytics Engineering process with the dbt technology. It integrates with a PostgreSQL database and supports dbt for transformation ... under the ELT pipeline the major focus is on the ...
 
 ---
 
-###  Project Overview
+## Project Overview
 
-This project uses dbt and ... to solve and present solutions to a CEO from a DVD rental store KPI and questions about the store and its activity.
+This project uses dbt and ... to solve and present solutions to a CEO from a DVD rental store KPI and questions about the store and its activity
+
 ---
 
-### Project Structure
+## Project Structure
 
-```
+```text
 DVDRENTAL/
 ├── data/
 ├── src/
@@ -50,30 +51,26 @@ DVDRENTAL/
 
 - **Python 3.12**
 - **Pandas** for data manipulation
-- **SQLAlchemy** for database operations 
+- **SQLAlchemy** for database operations
 - **PostgreSQL** hosted locally
-- **dbt** for transformations and models 
+- **dbt** for transformations and models
 - **Streamlit** for data visualization
 
 ---
 
-###  How it works
+### How it works
 
 1. **Extract**: Collects daily stock prices and company overview for JVA using Alpha Vantage API.
 2. **Load**: Inserts the transformed data into a PostgreSQL database.
-2. **Transform**: ...
+3. **Transform**: ...
 4. **Model** ...
 5. **Visualize** (optional): ...
 
 ---
 
-
-###  Run the dashboard
+### Run the dashboard
 
 ```bash
 # Run dashboard visualization
 streamlit run src/dashboard_jva.py
 ```
-
-
-

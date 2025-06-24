@@ -2,7 +2,7 @@ version: 1
 
 models:
   - name: stg__dvd_rental_category
-    description: "Staging table for category"
+    description: '{{ doc("stg__dvd_rental_category") }}'
     columns:
       - name: category_id
         description: "Unique Identifier of a category"
@@ -19,7 +19,7 @@ models:
           - not_null
 
   - name: stg__dvd_rental_film_category
-    description: "Staging table for film category"
+    description: '{{ doc("stg__dvd_rental_film_category") }}'
     columns:
       - name: film_id
         description: "Unique Identifier of a film category"
@@ -42,7 +42,7 @@ models:
           - not_null
 
   - name: stg__dvd_rental_film
-    description: "Staging table for film"
+    description: '{{ doc("stg__dvd_rental_film") }}'
     columns:
       - name: film_id
         description: "Unique Identifier of the film"
@@ -75,7 +75,7 @@ models:
           - not_null
 
   - name: stg__dvd_rental_inventory
-    description: "Staging table for inventory"
+    description: '{{ doc("stg__dvd_rental_inventory") }}'
     columns:
       - name: inventory_id
         description: "Unique Identifier of the inventory"
@@ -99,7 +99,7 @@ models:
           - not_null
 
   - name: stg__dvd_rental_payment
-    description: "Staging table for payment"
+    description: '{{ doc("stg__dvd_rental_payment") }}'
     columns:
       - name: payment_id
         description: "Unique Identifier of the payment"
@@ -134,7 +134,7 @@ models:
           - not_null
 
   - name: stg__dvd_rental_rental
-    description: "Staging table for rental"
+    description: '{{ doc("stg__dvd_rental_rental") }}'
     columns:
       - name: rental_id
         description: "Unique Identifier of the rental"
@@ -171,7 +171,7 @@ models:
           - not_null
 
   - name: stg__dvd_rental_staff
-    description: "Staging table for staff"
+    description: '{{ doc("stg__dvd_rental_staff") }}'
     columns:
       - name: staff_id
         description: "Unique Identifier of the staff"
@@ -212,7 +212,7 @@ models:
           - not_null
 
   - name: stg__dvd_rental_store
-    description: "Staging table for stores"
+    description: '{{ doc("stg__dvd_rental_store") }}'
     columns:
       - name: store_id
         description: "Unique Identifier of the store" 
@@ -239,7 +239,7 @@ models:
   
 
   - name: stg__dvd_rental_customer
-    description: "Staging table for customers with personal data excluded for privacy"
+    description: '{{ doc("stg__dvd_rental_customer") }}'
     columns:
       - name: customer_id
         description: "Unique identifier of the customer"
