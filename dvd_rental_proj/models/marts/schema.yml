@@ -1,0 +1,38 @@
+version: 1
+
+models:
+  - name: fct_rental_performance_by_store
+    description: "Fact table that gives the monthly rental based performance of each store, before 2006"
+    columns:
+      - name: store_id
+        description: "Store identifier"
+        tests:
+          - not_null
+      - name: total_rentals
+        description: "Sum of all the rentals by store each month"
+        tests:
+          - not_null
+      - name: avg_rental_duration
+        description: "Average duration rentals by store each month"
+        tests:
+          - not_null
+      - name: month
+        description: "Year and Month identifier"
+        tests:
+          - not_null
+
+  - name: fct_revenue_performance_by_store
+    description: "Fact table that gives the monthly revenue based performance of each store, after 2006"
+    columns:
+      - name: store_id
+        description: "Identifier of the store"
+        tests:
+          - not_null
+      - name: total_revenue
+        description: "Total revenue earned by a store in the corresponding month"
+        tests:
+          - not_null
+      - name: month
+        description: "Year and Month identifier"
+        tests:
+          - not_null
