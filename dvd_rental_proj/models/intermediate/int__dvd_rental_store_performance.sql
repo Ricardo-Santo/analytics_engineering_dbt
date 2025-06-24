@@ -1,4 +1,5 @@
 -- connects metrics per store and period — revenue, rental volume, and average rental duration
+-- Rental and payment data ranges do not overlap. Therefore, full-store performance index by period cannot be computed.
 
 with revenue as (
     select
@@ -13,7 +14,7 @@ rental_counts as (
     select
         s.store_id,
         date_trunc('month', r.rental_date) as month,
-        count(*) as total_rentals
+        count(r.rental_id) as total_rentals
     from {{ ref('stg__dvd_rental_rental') }} r
     join {{ ref('stg__dvd_rental_staff') }} s on r.staff_id = s.staff_id
     group by s.store_id, month
