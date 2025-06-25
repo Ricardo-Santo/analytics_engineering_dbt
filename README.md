@@ -1,3 +1,11 @@
+# Welcome to our dbt Project
+
+Developed by:
+
+Ricardo Espírito Santo
+
+Rodolfo Fernandes
+
 # ANALYTICS ENGINEERING PROJECT
 
 This project demonstrates the Analytics Engineering workflow using dbt (data build tool) for data transformation within an ELT pipeline. The data is integrated into a PostgreSQL database and modeled to support stakeholder-driven decision-making — specifically tailored to answer key business questions from the CEO of a DVD rental store.
