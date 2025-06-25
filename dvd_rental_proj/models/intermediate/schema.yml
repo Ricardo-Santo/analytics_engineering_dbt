@@ -41,8 +41,12 @@ models:
         description: "Category of the rented film"
         tests:
           - not_null
-      - name: rental_count
-        description: "Count of the rentals made by store and category name"
+      - name: rental_id
+        description: "Identifier of the rental made"
+        tests:
+          - not_null
+      - name: rental_date
+        description: "Timestamp of the date when rental was made"
         tests:
           - not_null
 
@@ -61,8 +65,12 @@ models:
         description: "Store where the film is rented at"
         tests:
           - not_null
-      - name: rental_count
-        description: "Count of the rentals made of a film, by store and title"
+      - name: month
+        description: "Month and Year of the date the rental was made"
+        tests:
+          - not_null
+      - name: rental_id
+        description: "Identifier of the rental made"
         tests:
           - not_null
 

@@ -36,3 +36,23 @@ models:
         description: "Year and Month identifier"
         tests:
           - not_null
+
+  - name: fct_most_rented_category_by_period_by_store
+    description: '{{ doc("fct_most_rented_category_by_period_by_store") }}'
+    columns:
+      - name: store_id
+        description: "Store identifier"
+        tests:
+          - not_null
+      - name: month
+        description: "Year and month of the rental activity"
+        tests:
+          - not_null
+      - name: category_name
+        description:  "Name of the film category with the most rentals in the given month and store"
+        tests:
+          - not_null
+      - name: rental_count
+        description: "Total number of rentals for the most rented category in the given month and store"
+        tests:
+          - not_null

@@ -12,7 +12,6 @@ SELECT
 FROM {{ ref('int__dvd_rental_store_performance') }}
 WHERE month >= date '2007-01-01' AND store_id = {{ store_id }}
 GROUP BY store_id, month
-ORDER BY store_id, month
 ),
 
 {% endfor %}
