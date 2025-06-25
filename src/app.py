@@ -20,12 +20,31 @@ def load_wordcloud_data():
     csv_path = os.path.join(os.path.dirname(__file__), "..", "data", "fct_most_rented_film_by_period_by_store.csv")
     return pd.read_csv(csv_path)
 
+def load_performance_data():
+    path = os.path.join(os.path.dirname(__file__), "..", "data", "fct_rental_performance_by_store.csv")
+    df = pd.read_csv(path, parse_dates=["month"])
+    return df
+
+def load_revenue_data():
+    path = os.path.join(os.path.dirname(__file__), "..", "data", "fct_revenue_performance_by_store.csv")
+    df = pd.read_csv(path, parse_dates=["month"])
+    return df
+
 st.subheader("DVD Rental company KPI's")
 
 film_df = load_wordcloud_data()
 
 # Chart selection
-chart_option = st.radio("📊 Choose a visualization", ["Bar Chart (by Category)", "Word Cloud (by Film)"])
+chart_option = st.radio(
+    "📊 Choose a visualization",
+    [
+        "Bar Chart (by Category)",
+        "Word Cloud (by Film)",
+        "Rental Performance by Store",
+        "Revenue Performance by Store"
+    ]
+)
+
 
 if chart_option == "Bar Chart (by Category)":
     # Sidebar filter
@@ -75,3 +94,53 @@ elif chart_option == "Word Cloud (by Film)":
     ax.imshow(wc, interpolation='bilinear')
     ax.axis("off")
     st.pyplot(fig)
+
+elif chart_option == "Rental Performance by Store":
+    st.subheader("📈 Total Rentals per Month by Store")
+
+    perf_df = load_performance_data()
+    perf_df["month"] = pd.to_datetime(perf_df["month"])
+
+    # Altair bar chart
+    perf_chart = (
+        alt.Chart(perf_df)
+        .mark_bar(size=40) 
+        .encode(
+            x=alt.X("month:T", sort="ascending"),
+            y=alt.Y("total_rentals:Q", title="Total Rentals"),
+            color=alt.Color("store_id:N", title="Store"),
+            tooltip=["store_id", "month", "total_rentals"]
+        ).configure_scale(
+    bandPaddingInner=0.1  # Reduce spacing between grouped bars
+)
+        
+    )
+
+    st.altair_chart(perf_chart, use_container_width=True)
+
+elif chart_option == "Revenue Performance by Store":
+    st.subheader("💰 Revenue Performance Over Time by Store")
+
+    rev_df = load_revenue_data()
+
+    # Line chart
+    revenue_chart = (
+        alt.Chart(rev_df)
+        .mark_line(point=True)
+        .encode(
+            x=alt.X("month:T", title="Month"),
+            y=alt.Y("total_revenue:Q", title="Total Revenue"),
+            color=alt.Color("store_id:N", title="Store"),
+            tooltip=["store_id", "month", "total_revenue"]
+        )
+        .properties(width=800, height=400)
+    )
+
+    st.altair_chart(revenue_chart, use_container_width=True)
+
+    # Total revenue summary
+    st.markdown("### 🧾 Total Revenue Summary")
+    total_revenue_summary = (
+        rev_df.groupby("store_id")["total_revenue"].sum().reset_index()
+    )
+    st.dataframe(total_revenue_summary.rename(columns={"total_revenue": "Total Revenue"}))

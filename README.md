@@ -23,7 +23,14 @@ The goal of this project is to simulate a real-world analytics use case: deliver
 ```text
 DVDRENTAL/
 ├── data/
+|   ├── fct_most_rented_category_by_period_by_store.csv
+|   ├── fct_rental_performance_by_store.csv
+|   ├── fct_revenue_performance_by_store.csv
+|   └── fct_most_rented_film_by_period_by_store.csv        
+|
 ├── src/
+|   └── app.py
+|
 └── dvd_rental_proj/
     └── models/
         ├── staging/
