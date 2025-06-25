@@ -89,5 +89,5 @@ Mart models – Final business-focused tables used to answer stakeholder questio
 
 ```bash
 # Run dashboard visualization
-streamlit run src/dashboard_jva.py
+streamlit run src/app.py
 ```
