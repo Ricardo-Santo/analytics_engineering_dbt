@@ -1,0 +1,9 @@
+store_id,month,category_name,rental_count
+1,2005-05,Family,50
+1,2005-06,Animation,85
+1,2005-07,Animation,253
+1,2005-08,Sports,225
+2,2005-05,Drama,52
+2,2005-06,Animation,89
+2,2005-07,Sports,273
+2,2005-08,Sports,207

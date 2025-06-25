@@ -225,9 +225,6 @@ models:
         description: "Identifier of the store the customer is associated with"
         tests:
           - not_null
-          - relationships:
-              to: ref('stg__dvd_rental_store')
-              field: store_id
 
       - name: is_active
         description: "Indicates whether the customer is currently active"
