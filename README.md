@@ -28,21 +28,15 @@ DVDRENTAL/
         │   ├── stg__dvd_rental_film_category.sql
         │   └── stg__dvd_rental_staff.sql
         ├── intermediate/
+        │   ├── int__dvd_rental_customer_revenue.sql
         │   ├── int__dvd_rental_payment_store.sql
         │   ├── int__dvd_rental_rentals_by_category.sql
-        │   ├── int__dvd_rental_store_performance.sql
         │   ├── int__dvd_rental_rentals_per_film.sql
-        │   └── int__dvd_rental_customer_revenue.sql
+        │   └── int__dvd_rental_store_performance.sql
         ├── marts/
-        │   ├── fct_income_per_store_period.sql
-        │   ├── fct_top_category_per_store_period.sql
-        │   ├── fct_avg_rental_duration.sql
-        │   ├── fct_rentals_per_film.sql
-        │   └── fct_store_performance_index.sql
-        ├── dimensions/
-        │   ├── dim_store.sql
-        │   ├── dim_date.sql
-        │   └── dim_film.sql
+        │   ├── fct_most_rented_category_by_period_by_store.sql
+        │   ├── fct_rental_performance_by_store.sql
+        │   ├── fct_revenue_performance_by_store.sql
 ```
 
 ---

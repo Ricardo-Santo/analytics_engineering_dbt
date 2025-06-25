@@ -18,12 +18,8 @@ Try running the following commands:
 ## Add questions here
 
 ## In the Staging layer, we decide to materialize the table into views, so as to not take too much space
-
 ### We defined the sources model and placed it inside the staging folder
-
-### We also decided to convert some of the data types from smallint to integer
-
-### tables
+### We also decided to convert some of the data types from smallint to integer in the tables:
 
 ### - film_category: film_id and category_id columns
 
@@ -42,3 +38,7 @@ Try running the following commands:
 ### Some columns where also dropped from the staff table because it did not contain relevant information for the questions we where given to asnwer
 
 ### Tests, descriptions and relationships where also developed for each data table selected, and it's present in the schema.yml inside the staging folder
+
+### In the Intermediate layer, we decide to aggregate relevant data together forming about 5 different views, which we will then use in the last schema, to present our KPI's and thus answering our questions. Some of the transformations done in this layer, where mainly the transformation of the timestamps into Year and Month text format and made sum's and counts for the rental's and the revenue earned.
+
+### In the last layer we answered our questions by presenting our results in table format, with 3 different tables, for 3 different KPI's about the rental.
