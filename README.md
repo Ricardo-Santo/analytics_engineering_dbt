@@ -52,7 +52,7 @@ DVDRENTAL/
 ---
 ### Technologies Used
 
-- **Python 3.12**
+- **Python 3.12** to help prepare data for visualization
 - **PostgreSQL** hosted locally
 - **dbt** for transformations and models
 - **Streamlit** for data visualization
