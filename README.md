@@ -33,11 +33,11 @@ DVDRENTAL/
         │   ├── int__dvd_rental_rentals_by_category.sql
         │   ├── int__dvd_rental_rentals_per_film.sql
         │   └── int__dvd_rental_store_performance.sql
-        ├── marts/
-        │   ├── fct_most_rented_category_by_period_by_store.sql
-        │   ├── fct_rental_performance_by_store.sql
-        │   ├── fct_revenue_performance_by_store.sql
-        │   └── fct_most_rented_film_by_period_by_store.sql        
+        └── marts/
+            ├── fct_most_rented_category_by_period_by_store.sql
+            ├── fct_rental_performance_by_store.sql
+            ├── fct_revenue_performance_by_store.sql
+            └── fct_most_rented_film_by_period_by_store.sql        
 
 ```
 
