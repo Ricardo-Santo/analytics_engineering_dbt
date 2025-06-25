@@ -1,6 +1,6 @@
 # Welcome to our dbt Project
 
-Developed by:
+**Developed by:**
 
 Ricardo Espírito Santo
 
