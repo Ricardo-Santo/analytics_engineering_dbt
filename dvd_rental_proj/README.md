@@ -1,11 +1,3 @@
-# Welcome to our dbt Project
-
-Developed by:
-
-Ricardo Espírito Santo
-
-Rodolfo Fernandes
-
 ## Project Overview
 
 As part of this analytics engineering project, we were tasked with answering key operational and financial questions from the CEO of a DVD rental company. Using dbt to build reliable, testable data models, we answered the following:
