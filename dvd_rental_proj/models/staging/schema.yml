@@ -210,32 +210,6 @@ models:
         description: "Timestamp of the last update made to a row"
         tests:
           - not_null
-
-  - name: stg__dvd_rental_store
-    description: '{{ doc("stg__dvd_rental_store") }}'
-    columns:
-      - name: store_id
-        description: "Unique Identifier of the store" 
-        tests:
-          - unique
-          - not_null
-      - name: manager_staff_id
-        description: "ID of the staff person that manages the corresponding store"
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg__dvd_rental_staff')
-              field: staff_id
-      - name: address_id
-        description: "ID of the address of the store"
-        tests:
-          - unique
-          - not_null
-      - name: last_update
-        description: "Timestamp of the last update made to a row"
-        tests:
-          - not_null
-    materialized: view
   
 
   - name: stg__dvd_rental_customer

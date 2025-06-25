@@ -37,6 +37,8 @@ DVDRENTAL/
         │   ├── fct_most_rented_category_by_period_by_store.sql
         │   ├── fct_rental_performance_by_store.sql
         │   ├── fct_revenue_performance_by_store.sql
+        │   └── fct_most_rented_film_by_period_by_store.sql        
+
 ```
 
 ---

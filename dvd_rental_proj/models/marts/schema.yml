@@ -1,23 +1,15 @@
 version: 1
 
 models:
-  - name: fct_rental_performance_by_store
-    description: '{{ doc("fct_rental_performance_by_store") }}'
+  - name: fct_most_rented_film_by_period_by_store
+    description: '{{ doc("fct_most_rented_film_by_period_by_store") }}'
     columns:
-      - name: store_id
-        description: "Store identifier"
+      - name: title
+        description: "Title of Film"
         tests:
           - not_null
-      - name: total_rentals
-        description: "Sum of all the rentals by store each month"
-        tests:
-          - not_null
-      - name: avg_rental_duration
-        description: "Average duration rentals by store each month"
-        tests:
-          - not_null
-      - name: month
-        description: "Year and Month identifier"
+      - name: number_of_rentals
+        description: "Sum of all the rentals by film"
         tests:
           - not_null
 
